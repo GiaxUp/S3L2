@@ -91,9 +91,26 @@ console.log(incrementedNumbers);
   es.: ["EPICODE", "is", "great"] => [7, 2, 5]
 */
 
+const stringLength = (array) => {
+  return array.map((elem) => elem.length);
+};
+
+console.log(stringLength(["EPICODE", "is", "great"]));
+
 /* ESERCIZIO 9
   Scrivi una funzione per creare un array contenente tutti i valori DISPARI da 1 a 99.
 */
+
+const oddOnly = () => {
+  const array = [];
+  for (let i = 0; i < 100; i++) {
+    if (i % 2 !== 0) {
+      array.push(i);
+    }
+  }
+  return array;
+};
+console.log(oddOnly());
 
 /* Questo array di film verrà usato negli esercizi a seguire. Non modificarlo e scorri oltre per riprendere gli esercizi :) */
 const movies = [
@@ -210,22 +227,73 @@ const movies = [
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
 
+const oldestMovie = (array) => {
+  let result = { Year: 2100 };
+  for (let i = 0; i < array.length; i++) {
+    let currentYear = parseInt(array[i].Year);
+    if (currentYear < result.Year) {
+      result = array[i];
+    }
+  }
+
+  return result;
+};
+console.log(oldestMovie(movies));
+
 /* ESERCIZIO 11
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
+
+const countMovies = (array) => {
+  return array.length;
+};
+console.log(countMovies(movies));
 
 /* ESERCIZIO 12
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
 
+const onlyTitles = (array) => {
+  return array.map((elem) => elem.Title);
+};
+console.log(onlyTitles(movies));
+
 /* ESERCIZIO 13
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
+
+const onlyMillennium = (array) => {
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (parseInt(array[i].Year) > 1999) {
+      result.push(array[i]);
+    }
+  }
+  return result;
+};
 
 /* ESERCIZIO 14
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
 
+const getMovieID = function (array, id) {
+  let foundMovie = null;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].imdbID === id) {
+      foundMovie = array[i];
+    }
+  }
+  return foundMovie;
+};
+
 /* ESERCIZIO 15
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
+
+const sumAll = (array) => {
+  let result = 0;
+  for (let i = 0; i < array.length; i++) {
+    result += parseInt(array[i].Year);
+  }
+  return result;
+};
